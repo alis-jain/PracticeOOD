@@ -1,25 +1,33 @@
 class Gear{
+	class Wheel{
+		double rim;
+		double tire;
+
+		Wheel(double rim, double tire){
+			this.rim = rim;
+			this.tire = tire;
+		}
+
+		double wheelDiameter(){
+			return rim + 2*tire;
+		}
+	}
+
 	int chainring;
 	int cog;
-	double rim;
-	double tire;
+	Wheel myWheel;
 
 	Gear(int chainring, int cog, double rim, double tire){
 		this.chainring = chainring;
 		this.cog = cog;
-		this.rim = rim;
-		this.tire = tire;
+		this.myWheel = new Wheel(rim, tire);
 	}
 
 	double gearInches(){
-		return gearRatio()*diameter();
-	}
-	
-	double gearRatio(){
-		return ((double)chainring)/cog;
+		return gearRatio()*myWheel.wheelDiameter();
 	}
 
-	double diameter(){
-		return rim + 2*tire;
+	double gearRatio(){
+		return ((double)chainring)/cog;
 	}
 }
