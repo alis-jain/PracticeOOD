@@ -12,10 +12,14 @@ class Gear{
 	}
 
 	double gearInches(){
-		return gearRatio()*(rim + 2*tire);
+		return gearRatio()*diameter();
+	}
+	
+	double gearRatio(){
+		return ((double)chainring)/cog;
 	}
 
-	double gearRatio(){
-		return (chainring*1.0)/cog;
+	double diameter(){
+		return rim + 2*tire;
 	}
 }
