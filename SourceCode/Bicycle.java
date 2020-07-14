@@ -12,11 +12,15 @@ class Gear{
 	}
 
 	double gearInches(){
-		return gearRatio()*myWheel.wheelDiameter();
+		return gearRatio()*getDiameter();
 	}
 
 	double gearRatio(){
 		return ((double)chainring)/cog;
+	}
+
+	double getDiameter(){
+		return myWheel.wheelDiameter();
 	}
 }
 
