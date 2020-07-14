@@ -2,7 +2,7 @@ class Bicycle{
     String size, chain;
     String tire_size;
 
-    public Bicycle(String size, String chain, String tire_size){
+    Bicycle(String size, String chain, String tire_size){
         this.size = size;
         this.chain = chain == null ? defaultChain() : chain;
         this.tire_size = tire_size == null ? defaultTire_size(): tire_size;
@@ -19,6 +19,24 @@ class Bicycle{
 
     String defaultTire_size(){
     	return null;
+    }
+}
+
+class RoadBike extends Bicycle{
+	String tape_color;
+
+	RoadBike(String tape_color, String size, String chain, String tire_size){
+		super(size, chain, tire_size);
+		this.tape_color = tape_color;
+	}
+
+	void displaySpares(){
+        super.displaySpares();
+        System.out.println("Color of Tape is: " + tape_color);
+    }
+
+    String defaultTire_size(){
+    	return "23";
     }
 }
 
@@ -46,9 +64,13 @@ class MountainBike extends Bicycle{
     }
 }
 
-class BicycleType{
+public class BicycleType{
 	public static void main(String[] args){
-		MountainBike bike = new MountainBike("Manitou", "Fox", null, "S", null);
-		bike.displaySpares();
+		MountainBike mountainbike = new MountainBike("Manitou", "Fox", null, "S", null);
+		mountainbike.displaySpares();
+		System.out.println();
+		RoadBike roadbike = new RoadBike("purple", "M", null, "53.26");
+        roadbike.displaySpares();
+        System.out.println();
 	}
 }
