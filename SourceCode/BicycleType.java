@@ -20,8 +20,12 @@ class Bicycle{
 		else{
 			this.chain = "10-speed";
 			this.tire_size = "2.1";
-		}
-		
+		}	
+	}
+
+	void displaySpares(){
+		System.out.println("Chain is " + chain);
+		System.out.println("Tire_size is " + tire_size);
 	}
 }
 
@@ -29,8 +33,6 @@ class BicycleType{
 	public static void main(String[] args){
 		Bicycle bike = new Bicycle("mountain", "S", "Red", "Manitou", "Fox");
 		bike.spares();
-		System.out.println("Size is " + bike.size);
-		System.out.println("Chain is " + bike.chain);
-		System.out.println("Chain is " + bike.tire_size);
+		bike.displaySpares();
 	}
 }
