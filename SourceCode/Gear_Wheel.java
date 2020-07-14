@@ -42,7 +42,7 @@ class Wheel{
 	}
 }
 
-class Bicycle{
+class Gear_Wheel{
 	public static void main(String[] args){
 		Wheel myWheel = new Wheel(26, 1.5);
 		System.out.println("Circumference = " + myWheel.wheelCircumference());
