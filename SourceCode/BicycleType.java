@@ -1,38 +1,54 @@
 class Bicycle{
-	String style, size;
-	String tape_color;
-	String chain, tire_size;
-	String front_shock, rear_shock;
+    String size, chain;
+    String tire_size;
 
-	Bicycle(String style, String size, String tape_color, String front_shock, String rear_shock){
-		this.style = style;
-		this.size = size;
-		this.tape_color = tape_color;
-		this.front_shock = front_shock;
-		this.rear_shock = rear_shock;
-	}
+    public Bicycle(String size, String chain, String tire_size){
+        this.size = size;
+        this.chain = chain == null ? defaultChain() : chain;
+        this.tire_size = tire_size == null ? defaultTire_size(): tire_size;
+    }
 
-	void spares(){
-		if (style == "road"){
-			this.chain = "10-speed";
-			this.tire_size = "23";
-		}
-		else{
-			this.chain = "10-speed";
-			this.tire_size = "2.1";
-		}	
-	}
-
-	void displaySpares(){
+    void displaySpares(){
 		System.out.println("Chain is " + chain);
 		System.out.println("Tire_size is " + tire_size);
 	}
+
+    String defaultChain(){
+        return "10-speed";
+    }
+
+    String defaultTire_size(){
+    	return null;
+    }
+}
+
+class MountainBike extends Bicycle{
+    String front_shock, rear_shock;
+
+    MountainBike(String front_shock, String rear_shock, String chain, String size, String tire_size){
+        super(size, chain, tire_size);
+        this.front_shock = front_shock;
+        this.rear_shock = rear_shock;
+    }
+
+    void displaySpares(){
+        super.displaySpares();
+        System.out.println("Front_shock: " + front_shock);
+        System.out.println("Rear_shock: " + rear_shock);
+    }
+
+    String defaultTire_size(){
+        return "2.1";
+    }
+
+    String defaultChain(){
+        return "15-speed";
+    }
 }
 
 class BicycleType{
 	public static void main(String[] args){
-		Bicycle bike = new Bicycle("mountain", "S", "Red", "Manitou", "Fox");
-		bike.spares();
+		MountainBike bike = new MountainBike("Manitou", "Fox", null, "S", null);
 		bike.displaySpares();
 	}
 }
